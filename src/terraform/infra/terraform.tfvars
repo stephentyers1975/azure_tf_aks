@@ -11,7 +11,8 @@ aks_system_pool = {
   max_node_count = 3
 }
 aks_workload_pool = {
-  vm_size        = "Standard_F8s_v2"
+  vm_size        = "Standard_D2s_v3"
+  # vm_size        = "Standard_F8s_v2"
   min_node_count = 2
   max_node_count = 3
 }
