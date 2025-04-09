@@ -1,4 +1,4 @@
-# Azure VM build and Deployment demo utilising Hashcorp Packer and Terraform
+# Azure AKS build and Deployment demo utilising Hashcorp Terraform
 
 ## Intro
 
