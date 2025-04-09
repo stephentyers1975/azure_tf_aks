@@ -17,8 +17,8 @@ aks_workload_pool = {
   max_node_count = 3
 }
 container_registry_pushers = ["8fca167c-d540-4aee-b1f6-385398b14f44"]
-keyvault_readers           = ["8fca167c-d540-4aee-b1f6-385398b14f44"]
-keyvault_admins            = ["8fca167c-d540-4aee-b1f6-385398b14f44"]
+keyvault_readers           = ["c5783f70-3117-405a-884b-7c743571e908"]
+keyvault_admins            = ["c5783f70-3117-405a-884b-7c743571e908"]
 k8s_service_account_name   = "workload"
 k8s_namespace              = "app"
 database_admin_username    = "psqladmin"
