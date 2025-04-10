@@ -32,5 +32,5 @@ resource "azurerm_key_vault_secret" "database_admin_password" {
   name         = "db-admin-password"
   value        = random_password.database_admin.result
   key_vault_id = azurerm_key_vault.main.id
-  depends_on = [ azurerm_role_assignment.keyvault_admins, azurerm_kubernetes_cluster_node_pool.workload ]
+  depends_on = [ azurerm_role_assignment.keyvault_admins ]
 }
