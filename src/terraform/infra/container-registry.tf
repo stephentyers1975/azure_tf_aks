@@ -7,13 +7,16 @@ resource "azurerm_container_registry" "main" {
   zone_redundancy_enabled = true
 }
 
-data "azuread_application" "acr_accs" {
-  display_name = var.container_registry_pushers # Replace with the group's display name
+# data "azuread_application" "acr_accs" {
+#   display_name = var.container_registry_pushers # Replace with the group's display name
+# }
+
+data "azuread_service_principal" "acr_pushers" {
+  display_name = var.container_registry_pushers
 }
 
 resource "azurerm_role_assignment" "acr_push" {
   scope                = azurerm_container_registry.main.id
   role_definition_name = "AcrPush"
-  principal_id         = data.azuread_application.acr_accs.object_id
-
+  principal_id         = data.azuread_service_principal.acr_pushers.object_id
 }
