@@ -1,6 +1,6 @@
 application_name          = "fleet-app"
 environment_name          = "dev"
-primary_region            = "ukwest"
+primary_region            = "centralus"
 domain_name               = "cloud-stack.io"
 vnet_cidr_block           = "10.137.0.0/22"
 az_count                  = 2

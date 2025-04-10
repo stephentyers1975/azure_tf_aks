@@ -12,9 +12,6 @@ data "azuread_application" "acr_accs" {
 }
 
 resource "azurerm_role_assignment" "acr_push" {
-
-  
-
   scope                = azurerm_container_registry.main.id
   role_definition_name = "AcrPush"
   principal_id         = data.azuread_application.acr_accs.object_id
