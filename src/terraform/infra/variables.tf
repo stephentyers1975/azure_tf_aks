@@ -34,7 +34,7 @@ variable "aks_workload_pool" {
   })
 }
 variable "container_registry_pushers" {
-  type = list(string)
+  type = string
 }
 variable "keyvault_readers" {
   type = list(string)
