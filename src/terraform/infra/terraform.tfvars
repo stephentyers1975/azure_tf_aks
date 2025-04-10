@@ -1,6 +1,6 @@
 application_name          = "fleet-app"
 environment_name          = "dev"
-primary_region            = "uksouth"
+primary_region            = "ukwest"
 domain_name               = "cloud-stack.io"
 vnet_cidr_block           = "10.137.0.0/22"
 az_count                  = 2
@@ -12,8 +12,8 @@ aks_system_pool = {
   max_node_count = 3
 }
 aks_workload_pool = {
-  vm_size        = "Standard_D2s_v3"
-  # vm_size        = "Standard_F8s_v2"
+  # vm_size        = "Standard_D2s_v3"
+  vm_size        = "Standard_F8s_v2"
   min_node_count = 2
   max_node_count = 3
 }
