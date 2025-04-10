@@ -8,7 +8,7 @@ resource "azurerm_container_registry" "main" {
 }
 
 data "azuread_application" "acr_accs" {
-  display_name = "docker_acc" # Replace with the group's display name
+  display_name = var.container_registry_pushers # Replace with the group's display name
 }
 
 resource "azurerm_role_assignment" "acr_push" {
