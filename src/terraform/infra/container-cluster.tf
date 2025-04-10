@@ -12,9 +12,10 @@ resource "azurerm_kubernetes_cluster" "main" {
   default_node_pool {
     name                        = "systempool"
     vm_size                     = var.aks_system_pool.vm_size
-    auto_scaling_enabled = true
-    min_count                   = var.aks_system_pool.min_node_count
-    max_count                   = var.aks_system_pool.max_node_count
+    node_count = 1
+    # auto_scaling_enabled = true
+    # min_count                   = var.aks_system_pool.min_node_count
+    # max_count                   = var.aks_system_pool.max_node_count
     vnet_subnet_id              = azurerm_subnet.kubernetes.id
     os_disk_type                = "Ephemeral"
     os_disk_size_gb             = 30
@@ -99,15 +100,16 @@ resource "azurerm_kubernetes_cluster_node_pool" "workload" {
   name                  = "workloadpool"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.main.id
   vm_size               = var.aks_workload_pool.vm_size
-  auto_scaling_enabled = true
-  min_count             = var.aks_workload_pool.min_node_count
-  max_count             = var.aks_workload_pool.max_node_count
+  node_count = 1
+  # auto_scaling_enabled = true
+  # min_count             = var.aks_workload_pool.min_node_count
+  # max_count             = var.aks_workload_pool.max_node_count
   vnet_subnet_id        = azurerm_subnet.kubernetes.id
   os_disk_type          = "Ephemeral"
   orchestrator_version  = var.aks_orchestration_version
 
   mode  = "User" # Define this node pool as a "user" aka workload node pool
-  zones = [1, 2, 3]
+  # zones = [1, 2, 3]
 
   upgrade_settings {
     max_surge = "33%"
