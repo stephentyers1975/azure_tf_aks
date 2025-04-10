@@ -17,7 +17,7 @@ aks_workload_pool = {
   min_node_count = 2
   max_node_count = 3
 }
-container_registry_pushers = ["30c52525-0264-4fdc-a58b-5d15a0ac2627"]
+container_registry_pushers = ["8fca167c-d540-4aee-b1f6-385398b14f44"]
 keyvault_readers           = ["c5783f70-3117-405a-884b-7c743571e908"]
 keyvault_admins            = ["c5783f70-3117-405a-884b-7c743571e908"]
 k8s_service_account_name   = "workload"
