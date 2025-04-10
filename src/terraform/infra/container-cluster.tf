@@ -22,7 +22,7 @@ resource "azurerm_kubernetes_cluster" "main" {
     orchestrator_version        = var.aks_orchestration_version
     temporary_name_for_rotation = "workloadpool"
 
-    zones = [1, 2, 3]
+    # zones = [1, 2, 3]
 
     upgrade_settings {
       max_surge = "33%"
