@@ -78,7 +78,7 @@ locals {
 
 resource "azurerm_monitor_diagnostic_setting" "aks_clusters" {
 
-  name                           = "aks-${var.application_name}-${var.environment_name}-diag"
+  name                           = "aks-${var.application_name}-${var.environment_name}"
   target_resource_id             = azurerm_kubernetes_cluster.main.id
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.main.id
   log_analytics_destination_type = "Dedicated"
