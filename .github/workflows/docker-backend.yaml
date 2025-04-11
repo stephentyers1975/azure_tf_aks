@@ -13,8 +13,6 @@ env:
   DOTNET_WORKING_DIRECTORY: "./src/dotnet/backend/FleetAPI"
   DOCKER_IMAGE_NAME: "fleetops-backend"
   DOCKER_WORKING_DIRECTORY: "./src/dotnet/backend"
-  APPLICATION_NAME: fleet-aks
-  ENVIRONMENT_NAME: dev
 
 jobs:
 
@@ -93,7 +91,7 @@ jobs:
           -backend-config="resource_group_name=${{ vars.BACKEND_RESOURCE_GROUP_NAME }}" \
           -backend-config="storage_account_name=${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}" \
           -backend-config="container_name=${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}" \
-          -backend-config="key=${{ env.APPLICATION_NAME }}-${{ env.ENVIRONMENT_NAME }}"
+          -backend-config="key=${{ vars.APPLICATION_NAME }}-${{ vars.ENVIRONMENT_NAME }}"
 
         terraform apply -refresh-only -auto-approve
 
