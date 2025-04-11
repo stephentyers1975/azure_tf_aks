@@ -18,7 +18,6 @@ resource "azurerm_postgresql_server" "main" {
   administrator_login_password = random_password.database_admin.result
   version                      = "9.5"
   ssl_enforcement_enabled      = true
-  depends_on = [ azurerm_role_assignment.keyvault_admins ]
 }
 
 resource "azurerm_postgresql_database" "main" {
