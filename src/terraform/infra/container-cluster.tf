@@ -19,7 +19,7 @@ resource "azurerm_kubernetes_cluster" "main" {
     vnet_subnet_id              = azurerm_subnet.kubernetes.id
     os_disk_type                = "Ephemeral"
     os_disk_size_gb             = 30
-    orchestrator_version        = var.aks_orchestration_version
+    # orchestrator_version        = var.aks_orchestration_version
     temporary_name_for_rotation = "workloadpool"
 
     # zones = [1, 2, 3]
@@ -106,7 +106,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "workload" {
   # max_count             = var.aks_workload_pool.max_node_count
   vnet_subnet_id        = azurerm_subnet.kubernetes.id
   os_disk_type          = "Ephemeral"
-  orchestrator_version  = var.aks_orchestration_version
+  # orchestrator_version  = var.aks_orchestration_version
 
   mode  = "User" # Define this node pool as a "user" aka workload node pool
   # zones = [1, 2, 3]
