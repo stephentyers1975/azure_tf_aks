@@ -27,7 +27,15 @@ provider "azurerm" {
 }
 
 provider "kubernetes" {
-  config_path = "~/.kube/config"
-  # Optionally specify the AKS cluster context if needed
-  # config_context = "your-aks-cluster-context-name"
+  host = data.azurerm_kubernetes_cluster.aks.kube_config.0.host
+  client_certificate = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config.0.client_certificate)
+  client_key         = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config.0.client_key)
+  cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config.0.cluster_ca_certificate)
+
+ 
+}
+
+data "azurerm_kubernetes_cluster" "aks" {
+  name                = "aks-fleet-app-dev"
+  resource_group_name = "rg-fleet-app-dev"
 }
