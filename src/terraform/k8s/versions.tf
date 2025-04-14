@@ -25,3 +25,9 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+provider "kubernetes" {
+  config_path = "~/.kube/config"
+  # Optionally specify the AKS cluster context if needed
+  # config_context = "your-aks-cluster-context-name"
+}

@@ -1,0 +1,51 @@
+name: Terraform-Apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+
+env:
+  TERRAFORM_VERSION: '1.5.7'
+
+jobs:
+
+  terraform-apply:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ github.event.inputs.environment }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - id: setup
+      name: Setup `terraform`
+      uses: hashicorp/setup-terraform@main
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        terraform_wrapper: false
+
+    - id: apply
+      name: Terraform Apply
+      env:
+        ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}
+        ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
+        ARM_CLIENT_ID: ${{ vars.TERRAFORM_ARM_CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.TERRAFORM_ARM_CLIENT_SECRET }}
+        CLUSTER_NAME: "aks-fleet-app-dev"
+        RESOURCE_GROUP: "rg-fleet-app-dev"
+  
+      working-directory: ${{ vars.TERRAFORM_WORKING_DIRECTORY }}
+      run: |
+        az aks get-credentials --name $CLUSTER_NAME --resource-group $RESOURCE_GROUP
+        terraform init \
+          -backend-config="resource_group_name=${{ vars.BACKEND_RESOURCE_GROUP_NAME }}" \
+          -backend-config="storage_account_name=${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}" \
+          -backend-config="container_name=${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}" \
+          -backend-config="key=${{ vars.APPLICATION_NAME }}-${{ vars.ENVIRONMENT_NAME }}"
+          
+        terraform apply -auto-approve
