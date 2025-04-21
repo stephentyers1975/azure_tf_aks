@@ -6,7 +6,9 @@ This is part of a series of mini projects to explore the capabilities of Terrraf
 
 ## Technologies Used
 
-* Hashicorp Packer - Build tool for custom server images
+* Azure kubernetes Service - Microsoft's implementation of Kubernetes for container orchestration with built in Nginx ingress
+* Docker - Container build
+* Azure container registry - Private store for container container images
 * Hashicorp Terraform - Cloud infrastructure provisioning
 * Microsoft Azure - Cloud platform
 * Github Actions - CI/CD
